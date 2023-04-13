@@ -5,6 +5,7 @@ import { getLocaleFromHeaders } from "@calcom/lib/i18n";
 import type { SelectedCalendar, User as PrismaUser, Credential } from "@calcom/prisma/client";
 
 import type { CreateNextContextOptions } from "@trpc/server/adapters/next";
+import prisma from "@calcom/prisma";
 
 type CreateContextOptions = CreateNextContextOptions | GetServerSidePropsContext;
 
@@ -51,7 +52,6 @@ const DEFAULT_SESSION_GETTER: GetSessionFn = async ({ req, res }) => {
  * @see https://trpc.io/docs/context#inner-and-outer-context
  */
 export async function createContextInner(opts: CreateInnerContextOptions) {
-  const prisma = (await import("@calcom/prisma")).default;
   return {
     prisma,
     ...opts,

@@ -5,11 +5,12 @@ import cache from "memory-cache";
 import { z } from "zod";
 
 import { getServerSession } from "@calcom/features/auth/lib/getServerSession";
-import * as trpcNext from "@calcom/trpc/server/adapters/next";
+import { createNextApiHandler } from "@trpc/server/adapters/next";
 import { createContext as createTrpcContext } from "@calcom/trpc/server/createContext";
 import { appRouter } from "@calcom/trpc/server/routers/_app";
 
-export default trpcNext.createNextApiHandler({
+
+export default createNextApiHandler({
   router: appRouter,
   /**
    * @link https://trpc.io/docs/context
