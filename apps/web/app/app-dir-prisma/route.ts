@@ -3,6 +3,8 @@ import { NextResponse } from "next/server";
 export const dynamic = "force-dynamic";
 let cold = true;
 
+// Why won't this deploy
+
 export async function GET() {
   const coldStart = cold;
   cold = false;
